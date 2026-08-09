@@ -38,17 +38,39 @@ CUSTOM_CSS = """
     #MainMenu {visibility: hidden;}
     footer {visibility: hidden;}
 
-    html, body, .stApp,
-    [data-testid="stAppViewContainer"],
-    [data-testid="stMain"],
-    [data-testid="stHeader"] {
-        background-color: #F7F9FB !important;
-        color-scheme: light !important;
-    }
-    [data-testid="stHeader"] {
-        background-color: rgba(0,0,0,0) !important;
-    }
+.stApp {
+    background-color: #F7F9FB;
+    color: #1F2937 !important;
+}
 
+/* Main page text */
+.stApp p,
+.stApp span,
+.stApp label,
+.stApp li,
+.stApp h1,
+.stApp h2,
+.stApp h3,
+.stApp h4,
+.stApp h5,
+.stApp h6 {
+    color: #1F2937 !important;
+}
+
+/* Streamlit Markdown text */
+div[data-testid="stMarkdownContainer"] {
+    color: #1F2937 !important;
+}
+
+div[data-testid="stMarkdownContainer"] p,
+div[data-testid="stMarkdownContainer"] li {
+    color: #1F2937 !important;
+}
+
+/* Subheaders */
+div[data-testid="stSubheader"] {
+    color: #0F3057 !important;
+}
     .hero {
         padding: 2rem 2.2rem;
         border-radius: 16px;
