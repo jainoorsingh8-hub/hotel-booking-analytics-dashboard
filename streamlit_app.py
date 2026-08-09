@@ -38,8 +38,15 @@ CUSTOM_CSS = """
     #MainMenu {visibility: hidden;}
     footer {visibility: hidden;}
 
-    .stApp {
-        background-color: #F7F9FB;
+    html, body, .stApp,
+    [data-testid="stAppViewContainer"],
+    [data-testid="stMain"],
+    [data-testid="stHeader"] {
+        background-color: #F7F9FB !important;
+        color-scheme: light !important;
+    }
+    [data-testid="stHeader"] {
+        background-color: rgba(0,0,0,0) !important;
     }
 
     .hero {
@@ -69,9 +76,14 @@ CUSTOM_CSS = """
         padding: 1rem 1rem 0.6rem 1rem;
         box-shadow: 0 2px 10px rgba(15, 48, 87, 0.05);
     }
-    div[data-testid="stMetricLabel"] {
-        color: #5B6B7C;
+    div[data-testid="stMetricLabel"],
+    div[data-testid="stMetricLabel"] * {
+        color: #5B6B7C !important;
         font-weight: 600;
+    }
+    div[data-testid="stMetricValue"],
+    div[data-testid="stMetricValue"] * {
+        color: #0F3057 !important;
     }
 
     .insight-box {
@@ -103,6 +115,38 @@ CUSTOM_CSS = """
     }
     section[data-testid="stSidebar"] .stMultiSelect [data-baseweb="tag"] {
         background-color: #2E86AB !important;
+    }
+
+    /* Force readable text in the main content area by targeting Streamlit's
+       actual component test-ids (built-in widgets like st.metric / st.tabs /
+       st.markdown compute their text color from the active theme via JS, so
+       generic tag selectors like "p" or "span" don't reliably win against
+       them — the test-id + !important combo below mirrors the technique
+       already used for the sidebar, which does work reliably). */
+    div[data-testid="stMain"] [data-testid="stMarkdownContainer"],
+    div[data-testid="stMain"] [data-testid="stMarkdownContainer"] *,
+    div[data-testid="stMain"] [data-testid="stHeading"],
+    div[data-testid="stMain"] [data-testid="stHeading"] *,
+    div[data-testid="stMain"] [data-testid="stCaptionContainer"],
+    div[data-testid="stMain"] [data-testid="stCaptionContainer"] *,
+    div[data-testid="stMain"] [data-testid="stTab"],
+    div[data-testid="stMain"] [data-testid="stTab"] p,
+    div[data-testid="stMain"] [data-testid="stTab"] span {
+        color: #1B2733 !important;
+    }
+
+    /* Give the tab strip its own light background so dark tab labels are
+       never sitting on the platform's dark fallback background. */
+    div[data-testid="stMain"] [data-testid="stTabs"] {
+        background-color: #F7F9FB;
+    }
+    div[data-testid="stMain"] [data-baseweb="tab-border"] {
+        background-color: #E7ECF1 !important;
+    }
+
+    .insight-box, .insight-box * ,
+    .rec-card p, .rec-card p * {
+        color: #1B2733 !important;
     }
 </style>
 """
