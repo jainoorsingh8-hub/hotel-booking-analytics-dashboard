@@ -37,18 +37,6 @@ CUSTOM_CSS = """
 <style>
     #MainMenu {visibility: hidden;}
     footer {visibility: hidden;}
-    
-    html, body, .stApp,
-    [data-testid="stAppViewContainer"],
-    [data-testid="stMain"],
-    [data-testid="stHeader"] {
-        background-color: #F7F9FB !important;
-        color-scheme: light !important;
-    }
-    [data-testid="stHeader"] {
-        background-color: rgba(0,0,0,0) !important;
-    }
-
 
 .stApp {
     background-color: #F7F9FB;
