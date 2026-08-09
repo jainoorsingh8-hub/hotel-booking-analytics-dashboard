@@ -38,10 +38,39 @@ CUSTOM_CSS = """
     #MainMenu {visibility: hidden;}
     footer {visibility: hidden;}
 
-    /* Main page */
-    .stApp {
-        background-color: #F7F9FB;
-    }
+.stApp {
+    background-color: #F7F9FB;
+    color: #1F2937 !important;
+}
+
+/* Main page text */
+.stApp p,
+.stApp span,
+.stApp label,
+.stApp li,
+.stApp h1,
+.stApp h2,
+.stApp h3,
+.stApp h4,
+.stApp h5,
+.stApp h6 {
+    color: #1F2937 !important;
+}
+
+/* Streamlit Markdown text */
+div[data-testid="stMarkdownContainer"] {
+    color: #1F2937 !important;
+}
+
+div[data-testid="stMarkdownContainer"] p,
+div[data-testid="stMarkdownContainer"] li {
+    color: #1F2937 !important;
+}
+
+/* Subheaders */
+div[data-testid="stSubheader"] {
+    color: #0F3057 !important;
+}
 
     /* =========================
        SIDEBAR - DARK BLUE
