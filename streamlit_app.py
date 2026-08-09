@@ -104,7 +104,7 @@ CUSTOM_CSS = """
     }
     .rec-card h4 {
         margin-top: 0;
-        color: #0F3057;
+        color: #0F3057 !important;
     }
 
     section[data-testid="stSidebar"] {
@@ -129,10 +129,29 @@ CUSTOM_CSS = """
     div[data-testid="stMain"] [data-testid="stHeading"] *,
     div[data-testid="stMain"] [data-testid="stCaptionContainer"],
     div[data-testid="stMain"] [data-testid="stCaptionContainer"] *,
+    div[data-testid="stMain"] [data-baseweb="tab-list"],
+    div[data-testid="stMain"] [data-baseweb="tab-list"] *,
     div[data-testid="stMain"] [data-testid="stTab"],
-    div[data-testid="stMain"] [data-testid="stTab"] p,
-    div[data-testid="stMain"] [data-testid="stTab"] span {
+    div[data-testid="stMain"] [data-testid="stTab"] *,
+    div[data-testid="stMain"] [role="tab"],
+    div[data-testid="stMain"] [role="tab"] * {
         color: #1B2733 !important;
+        opacity: 1 !important;
+    }
+
+    /* Blanket safety net: some built-in widgets set text color (and
+       sometimes a reduced opacity for "secondary" text) via inline,
+       theme-computed JS styles that specific selectors above may still
+       miss. This catches anything else inside the main content area,
+       while explicitly excluding the hero banner, which intentionally
+       keeps white text on its own dark gradient background. */
+    div[data-testid="stMain"] *:not(.hero):not(.hero *) {
+        color: #1B2733 !important;
+        opacity: 1 !important;
+    }
+    .hero, .hero * {
+        color: white !important;
+        opacity: 0.98 !important;
     }
 
     /* Give the tab strip its own light background so dark tab labels are
@@ -142,6 +161,39 @@ CUSTOM_CSS = """
     }
     div[data-testid="stMain"] [data-baseweb="tab-border"] {
         background-color: #E7ECF1 !important;
+    }
+
+    /* Static preview table (see tab_overview): plain HTML, fully under our
+       CSS's control — unlike the interactive st.dataframe grid below,
+       which renders via a component that reads Streamlit's real active
+       theme directly in JS and cannot be restyled with CSS at all. */
+    .preview-table-wrap {
+        max-height: 420px;
+        overflow-y: auto;
+        border: 1px solid #E7ECF1;
+        border-radius: 10px;
+    }
+    table.preview-table {
+        width: 100%;
+        border-collapse: collapse;
+        font-size: 0.85rem;
+    }
+    table.preview-table th {
+        background: #0F3057 !important;
+        color: white !important;
+        text-align: left;
+        padding: 0.5rem 0.7rem;
+        position: sticky;
+        top: 0;
+    }
+    table.preview-table td {
+        color: #1B2733 !important;
+        padding: 0.45rem 0.7rem;
+        border-bottom: 1px solid #EEF2F6;
+        background: white;
+    }
+    table.preview-table tr:nth-child(even) td {
+        background: #F7F9FB;
     }
 
     .insight-box, .insight-box * ,
