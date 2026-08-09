@@ -1,5 +1,7 @@
 # 🏨 Investigate Hotel Business using Data Visualization
 
+Sample URL- https://hotel-booking-analytics-dashboard-rgddtckk3nkfuaerfgs4n5.streamlit.app/
+
 An end-to-end analysis of a 2017–2019 hotel bookings dataset (~119K rows),
 answering three business questions for hotel management:
 
